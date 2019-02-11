@@ -1,0 +1,29 @@
+<head>
+  <script src="https://unpkg.com/axios/dist/axios.js"></script>
+  <script type="text/javascript">
+  setTimeout(function () {
+    console.log('Making request at ' + new Date());
+    // This uses the preload
+    // const xhr = new XMLHttpRequest();
+    // xhr.open('GET', '/foo', true);
+    // xhr.onreadystatechange = function () {
+    //   if (xhr.readyState === 4) {
+    //     console.log('Received response at ' + new Date());
+    //     console.log(xhr.responseText);
+    //   }
+    // }
+    // xhr.send();
+
+    // This doesn't
+    const headers = { Accept: '*/*' };
+    axios.get('/foo', {headers, responseType: 'text'}).then(function (response) {
+      console.log('Received response at ' + new Date());
+      console.log(response);
+    });
+  }, 3000);
+  </script>
+  <link rel="preload" as="fetch" href="/foo" crossorigin="anonymous" />
+</head>
+<body>
+  <div>Hello</div>
+</body>
